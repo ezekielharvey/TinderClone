@@ -5,7 +5,7 @@ import tw from "twrnc"
 const ReceiverMessage = ({ message }) => {
     return (
         <View
-            style={[tw`bg-red-400 rounded-lg rounded-tl-none px-5 py-3 my-2 ml-14`,
+            style={[tw`bg-red-400 rounded-lg rounded-tl-none px-5 py-3 mx-3 my-2 ml-14`,
             { alignSelf: "flex-start" },]}
         >
             <Image
@@ -15,9 +15,8 @@ const ReceiverMessage = ({ message }) => {
             <Text
                 style={tw`text-white`}
             >{message.message}</Text>
-            <Text>ReceiverMessage</Text>
         </View>
-    )
-}
+    );
+};
 
-export default ReceiverMessage
+export default ReceiverMessage;
