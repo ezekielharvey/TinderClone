@@ -10,14 +10,21 @@ const ChatList = () => {
     const [matches, setMatches] = useState([]);
     const { user } = useAuth();
 
-    useEffect(() =>
-        onSnapshot(query(collection(db, 'matched'), where('usersMatched',
-            'array-contains', user.uid)), (snapshot) => setMatches(snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data(),
-            }))
+    useEffect(
+        () =>
+            onSnapshot(
+                query(
+                    collection(db, 'matched'),
+                    where('usersMatched', 'array-contains', user.uid)
+                ),
+                (snapshot) =>
+                    setMatches(
+                        snapshot.docs.map(doc => ({
+                            id: doc.id,
+                            ...doc.data(),
+                        }))
+                    )
             )
-        )
         , [user])
 
     console.log(matches);
@@ -34,7 +41,7 @@ const ChatList = () => {
             style={tw`p-5`}
         >
             <Text
-                style={tw`text-center texxt-lg`}
+                style={tw`text-center text-lg`}
             >No matches at the moment 😥</Text>
 
         </View>

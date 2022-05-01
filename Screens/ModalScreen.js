@@ -5,6 +5,7 @@ import useAuth from "../hooks/useAuth";
 import { useNavigation } from "@react-navigation/native";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import UploadImage from "../components/UploadImage"
 
 const ModalScreen = () => {
     const { user } = useAuth();
@@ -13,7 +14,7 @@ const ModalScreen = () => {
     const [age, setAge] = useState(null);
     const navigation = useNavigation();
 
-    const incompleteForm = !image || !job || !age;
+    const incompleteForm = !job || !age;
 
     const updateUserProfile = () => {
         setDoc(doc(db, 'user', user.uid), {
@@ -46,11 +47,9 @@ const ModalScreen = () => {
                 Step 1: The Profile Pic
             </Text>
 
-            <TextInput
+            <UploadImage
                 value={image}
-                onChangeText={setImage}
-                style={tw`text-center text-xl pb-2`}
-                placeholder="Enter a Profile Pic URL"
+                onChange={setImage}
             />
 
             <Text style={tw`text-center p-4 front-bold text-red-400`}>
