@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Button, Image, View, Platform, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
+import { launchImageLibrary } from "react-native-image-picker";
 
 export default function ImagePickerExample() {
     const [image, setImage] = useState(null);
+
+    // launchImageLibrary(options ?, callback)
+
+    // You can also use as a promise without 'callback':
+    // const result = await launchCamera()
 
     const addImage = async () => {
         // No permissions request is necessary for launching the image library
